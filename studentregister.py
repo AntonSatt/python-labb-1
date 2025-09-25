@@ -1,16 +1,32 @@
 #Python Labb 1 - Studentregister
 
-menu_start = True
+import os
+
+#importerad från Mika's GitHub (MikaSamba88)
+#funktion som rensar konsolen
+def clear_console():
+    if os.name == 'nt':
+        os.system('cls') #för windows
+    else:
+        os.system('clear') #för Linux & Mac
+
+MENU_START = True
 
 student_list = [
-    {"namn": "Ada", "ålder": 36}, 
-    {"namn": "Johan", "ålder": 25}, 
+    {"namn": "Ada", "ålder": 36},
+    {"namn": "Johan", "ålder": 25},
     {"namn": "Maria", "ålder": 31}
 ]
 
-while menu_start:
-    menu_selection = input("Välkommen till Studentregistret huvudmenu, väl ett val.\n1. för att lägga till en student.\n2. för att visa alla studenter\n3. för att avsluta programmet.\nVälj ovan: ")
+while MENU_START:
+    menu_selection = input(("Välkommen till Studentregistret huvudmenu, väl ett val.\n"
+                           "1 - för att lägga till en student.\n"
+                           "2 - för att visa alla studenter.\n"
+                           "3 - för att söka efter en student.\n"
+                           "4 - för att räkna ut genomsnittsåldern.\n"
+                           "5 - för att avsluta programmet.\nVälj ovan: "))
     print()
+    #Lägg till student.
     if menu_selection == '1':
         new_student = {}
         new_student["namn"] = input("Var vänlig att lägg till en studentens namn: ")
@@ -21,22 +37,38 @@ while menu_start:
             print(student["namn"], student["ålder"])
         print()
         input("Tryck enter för att komma tillbaka till Huvudmenun.\n")
+        clear_console()
+    #Listar alla studenter.
     elif menu_selection == '2':
         for student in student_list:
             print(student["namn"], student["ålder"])
-        input("")
+        input("\nTryck enter för att komma tillbaka till Huvudmenun.")
+        clear_console()
         continue
+    #Sök student.
     elif menu_selection == '3':
+        namn = input("Vilken namn letar du efter? ")
+        for namn_sok in student_list:
+            if namn == namn_sok["namn"]:
+                print(f"{namn} finns med!")
+                input("\nTryck enter för att komma tillbaka till Huvudmenun.")
+                break
+            else:
+                continue
+        clear_console()
+    #Räkna ut genomsnittsåldern.
+    elif menu_selection == '4':
+        ålder_total = 0
+        for ålder in student_list:
+            ålder_total += ålder["ålder"]
+        genomsnitt_ålder = ålder_total / len(student_list)
+        print(f'Genomsnittsåldern för alla studenter är {round(genomsnitt_ålder)} år.')
+        input("\nTryck enter för att komma tillbaka till Huvudmenun.")   
+        continue     
+    #Avsluta program.
+    elif menu_selection == '5':
         break
+    #Starta om huvudmenu.
     else:
+        clear_console()
         continue
-
-
-
-
-
-
-
-
-
-
