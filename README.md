@@ -39,7 +39,7 @@ eller om man väljer ett menyval som inte finns).
 - Kort reflektion (några meningar): Vilken del var svårast? Vad lärde du dig?
 
 
-### Reflektion och tanker
+### Reflektion och tankar
  - Bra uppgift, fick tänka och mecha för att komma ihåg hur man gör saker. Jag har gjort det här 
  i C (eller liknande uppgifter), men har inte riktigt koll på vad olika saker heter i Python, så nu gäller det att lära sig Python syntax. 
 
