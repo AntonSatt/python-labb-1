@@ -37,3 +37,12 @@ eller om man väljer ett menyval som inte finns).
 - Programfil (studentregister.py).
 - Körbar demonstration där man kan lägga till, lista, söka och ta bort studenter.
 - Kort reflektion (några meningar): Vilken del var svårast? Vad lärde du dig?
+
+
+### Reflektion och tanker
+ - Bra uppgift, fick tänka och mecha för att komma ihåg hur man gör saker. Jag har gjort det här 
+ i C (eller liknande uppgifter), men har inte riktigt koll på vad olika saker heter i Python, så nu gäller det att lära sig Python syntax. 
+
+ - Ibland så fastnar jag ganska länge på en uppgift, jag måste bara lära mig att inte finslipa 
+ för mycket utan gå vidare om det typ fungerar även om det inte är perfekt. Man kan alltid komma tillbaka
+ om man har tid över. 

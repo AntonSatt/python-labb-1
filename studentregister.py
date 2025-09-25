@@ -2,86 +2,96 @@
 
 import os
 
-#importerad från Mika's GitHub (MikaSamba88)
-#funktion som rensar konsolen
+#imported from Mika's GitHub (MikaSamba88)
+#function that clears the console.
 def clear_console():
     if os.name == 'nt':
-        os.system('cls') #för windows
+        os.system('cls') #for windows
     else:
-        os.system('clear') #för Linux & Mac
+        os.system('clear') #for Linux & Mac
+
+def get_non_empty_string(input_text):
+    name = ""
+    #while is true while name is an empty string
+    while not name:
+        name = input(input_text)
+    #controlling if name is an empty string
+        if not name:
+            print("Can't be left empty, please try again.")
+    return name
 
 MENU_START = True
 
 student_list = [
-    {"namn": "Ada", "ålder": 36},
-    {"namn": "Johan", "ålder": 25},
-    {"namn": "Maria", "ålder": 31}
+    {"name": "Ada", "age": 36},
+    {"name": "Johan", "age": 25},
+    {"name": "Maria", "age": 31}
 ]
 
 while MENU_START:
-    menu_selection = input(("Välkommen till Studentregistret huvudmenu, väl ett val.\n"
-                           "1 - för att lägga till en student.\n"
-                           "2 - för att ta bort en student.\n"
-                           "3 - för att visa alla studenter.\n"
-                           "4 - för att söka efter en student.\n"
-                           "5 - för att räkna ut genomsnittsåldern.\n"
-                           "6 - för att avsluta programmet.\nVälj ovan: "))
+    menu_selection = input(("Welcome to the Studentregister main menu, please pick an option:\n"
+                           "1 - to add a student.\n"
+                           "2 - to delete a student.\n"
+                           "3 - to show all students.\n"
+                           "4 - to search for a student.\n"
+                           "5 - to calculate the average age.\n"
+                           "6 - to quit the program\nPick above: "))
     print()
-    #Lägg till student.
+    #Add student.
     if menu_selection == '1':
         new_student = {}
-        new_student["namn"] = input("Var vänlig att lägg till en studentens namn: ")
-        new_student["ålder"] = int(input("Ålder?: "))
+        new_student["name"] = get_non_empty_string("Please enter a name: ")
+        new_student["age"] = int(input("Please enter age: "))
         student_list.append(new_student)
-        print("Tack, jag har lagt in studenten nu. Här är den nya listan:\n")
+        print("Thank you, here's the new list:\n")
         for student in student_list:
-            print(student["namn"], student["ålder"])
+            print(student["name"], student["age"])
         print()
-        input("Tryck enter för att komma tillbaka till Huvudmenun.\n")
+        input("Press enter to get back to the main menu.\n")
         clear_console()
-    #Ta bort student.
+    #Remove student.
     elif menu_selection == '2':
         for student in student_list:
-            print(student["namn"])
-        name_to_remove = input("Vem vill du ta bort?: ")
+            print(student["name"])
+        name_to_remove = input("Who do you want to remove?: ")
         for student in student_list:
-            if student["namn"] == name_to_remove:
+            if student["name"] == name_to_remove:
                 student_list.remove(student)
                 break
-        print(f"\n{name_to_remove} har tagits bort.")
-        input("\nTryck enter för att komma tillbaka till Huvudmenun.")
+        print(f"\n{name_to_remove} has been deleted.")
+        input("Press enter to get back to the main menu.\n")
         clear_console()
-    #Listar alla studenter.
+    #List all students.
     elif menu_selection == '3':
         for student in student_list:
-            print(student["namn"], student["ålder"])
-        input("\nTryck enter för att komma tillbaka till Huvudmenun.")
+            print(student["name"], student["age"])
+        input("Press enter to get back to the main menu.\n")
         clear_console()
         continue
-    #Sök student.
+    #Search for a student.
     elif menu_selection == '4':
-        namn = input("Vilken namn letar du efter? ")
-        for namn_sok in student_list:
-            if namn == namn_sok["namn"]:
-                print(f"{namn} finns med!")
-                input("\nTryck enter för att komma tillbaka till Huvudmenun.")
+        name = input("What are you searching for?: ")
+        for name_search in student_list:
+            if name == name_search["name"]:
+                print(f"{name} is here!")
+                input("Press enter to get back to the main menu.\n")
                 break
             else:
                 continue
         clear_console()
-    #Räkna ut genomsnittsåldern.
+    #Calculate the average age.
     elif menu_selection == '5':
-        ålder_total = 0
-        for ålder in student_list:
-            ålder_total += ålder["ålder"]
-        genomsnitt_ålder = ålder_total / len(student_list)
-        print(f'Genomsnittsåldern för alla studenter är {round(genomsnitt_ålder)} år.')
-        input("\nTryck enter för att komma tillbaka till Huvudmenun.")   
+        total_age = 0
+        for age in student_list:
+            total_age += age["age"]
+        average_age = total_age / len(student_list)
+        print(f"The average age for all students is {round(average_age)} years.")
+        input("Press enter to get back to the main menu.\n")   
         continue     
-    #Avsluta program.
+    #Quit the program.
     elif menu_selection == '6':
         break
-    #Starta om huvudmenu.
+    #Restart back to main menu.
     else:
         clear_console()
         continue
