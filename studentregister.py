@@ -67,7 +67,6 @@ while MENU_START:
             print(student["name"], student["age"])
         input("Press enter to get back to the main menu.\n")
         clear_console()
-        continue
     #Search for a student.
     elif menu_selection == '4':
         name = input("What are you searching for?: ")
@@ -86,9 +85,8 @@ while MENU_START:
             total_age += age["age"]
         average_age = total_age / len(student_list)
         print(f"The average age for all students is {round(average_age)} years.")
-        input("Press enter to get back to the main menu.\n")   
-        continue
-        clear_console()
+        input("Press enter to get back to the main menu.\n") 
+        clear_console()  
     #Quit the program.
     elif menu_selection == '6':
         break
