@@ -87,7 +87,8 @@ while MENU_START:
         average_age = total_age / len(student_list)
         print(f"The average age for all students is {round(average_age)} years.")
         input("Press enter to get back to the main menu.\n")   
-        continue     
+        continue
+        clear_console()
     #Quit the program.
     elif menu_selection == '6':
         break
